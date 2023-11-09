@@ -30,8 +30,16 @@ class Dessin() :
         else :
             self._contient = contient
 
+    @property
+    def contient(self) -> list[Point]:
+        return self._contient
+
     def __str__(self):
-        return f"Scene : {[str(p) for p in self._contient]}"
+        res = "Dessin : {\n"
+        for p in self._contient :
+            res = res + "  " + str(p) + "\n"
+        res = res + "}"
+        return res
 
     def ajout(self,p : Point) -> None:
         self._contient.append(p)
@@ -45,6 +53,7 @@ class Dessin() :
         res.ajout(p1)
         res.ajout(p2)
         res.ajout(p3)
+        return res
 
 def testScene() :
     sc1 = Dessin()
